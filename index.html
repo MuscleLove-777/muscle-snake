@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>筋肉スネーク / Muscle Snake | MuscleLove</title>
+<meta name="description" content="筋肉スネークゲーム！プロテインを食べて成長しよう！Classic snake game with muscle girls!">
+<meta property="og:title" content="筋肉スネーク / Muscle Snake | MuscleLove">
+<meta property="og:description" content="プロテインを食べて筋肉スネークを育てよう！💪">
+<meta property="og:image" content="images/img1.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <!-- Title Screen -->
+  <div id="title-screen" class="screen active">
+    <div class="title-container">
+      <div class="brand-logo">MuscleLove</div>
+      <h1 class="game-title">筋肉スネーク</h1>
+      <p class="game-title-en">Muscle Snake</p>
+      <div class="snake-preview">🐍💪</div>
+      <p class="description">
+        プロテインを食べて成長しよう！<br>
+        <span class="desc-en">Eat protein to grow your muscle snake!</span>
+      </p>
+      <div class="controls-info">
+        <p>🎮 矢印キー / WASD / スワイプ<br>
+        <span class="desc-en">Arrow Keys / WASD / Swipe</span></p>
+      </div>
+      <button id="start-btn" class="btn btn-primary">
+        ゲームスタート！<br><span class="btn-en">START GAME</span>
+      </button>
+      <div class="patreon-link">
+        <a href="https://www.patreon.com/cw/MuscleLove" target="_blank" rel="noopener">
+          ❤️ Patreonで応援する / Support on Patreon
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="game-screen" class="screen">
+    <div id="game-hud">
+      <div class="hud-item">
+        <span class="hud-label">スコア<br><span class="hud-en">SCORE</span></span>
+        <span id="hud-score" class="hud-value">0</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">長さ<br><span class="hud-en">LENGTH</span></span>
+        <span id="hud-length" class="hud-value">1</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">タイム<br><span class="hud-en">TIME</span></span>
+        <span id="hud-time" class="hud-value">0:00</span>
+      </div>
+    </div>
+    <div id="canvas-container">
+      <canvas id="game-canvas"></canvas>
+    </div>
+    <div id="mobile-controls">
+      <button class="ctrl-btn" data-dir="up">▲</button>
+      <div class="ctrl-row">
+        <button class="ctrl-btn" data-dir="left">◀</button>
+        <button class="ctrl-btn" data-dir="down">▼</button>
+        <button class="ctrl-btn" data-dir="right">▶</button>
+      </div>
+    </div>
+    <div id="countdown-overlay" class="hidden">
+      <span id="countdown-text"></span>
+    </div>
+    <div id="pause-overlay" class="hidden">
+      <p>⏸ 一時停止<br><span class="desc-en">PAUSED</span></p>
+      <button id="resume-btn" class="btn btn-primary">再開 / Resume</button>
+    </div>
+  </div>
+
+  <!-- Result Screen -->
+  <div id="result-screen" class="screen">
+    <div class="result-container">
+      <h2 class="result-title">ゲームオーバー！</h2>
+      <p class="result-title-en">GAME OVER</p>
+      <div class="result-image-wrap">
+        <img id="result-image" src="images/img1.png" alt="muscle">
+      </div>
+      <div class="result-stats">
+        <div class="stat-row">
+          <span class="stat-label">スコア / Score</span>
+          <span id="result-score" class="stat-value">0</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">長さ / Length</span>
+          <span id="result-length" class="stat-value">0</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">生存時間 / Time</span>
+          <span id="result-time" class="stat-value">0:00</span>
+        </div>
+      </div>
+      <div class="result-buttons">
+        <button id="retry-btn" class="btn btn-primary">
+          もう一回！<br><span class="btn-en">PLAY AGAIN</span>
+        </button>
+        <button id="share-btn" class="btn btn-share">
+          Xでシェア<br><span class="btn-en">Share on X</span>
+        </button>
+      </div>
+      <div class="patreon-link">
+        <a href="https://www.patreon.com/cw/MuscleLove" target="_blank" rel="noopener">
+          ❤️ Patreonで応援する / Support on Patreon
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="game.js"></script>
+</body>
+</html>
