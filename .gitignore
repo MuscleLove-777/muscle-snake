@@ -1,0 +1,16 @@
+.vercel
+
+
+# auto-defense (weekly sweep)
+.env
+.env.*
+!.env.example
+credentials*.json
+token*.json
+client_secret*.json
+service_account*.json
+*.pem
+*.key
+*.cookie
+*_cookies.json
+cookies.txt

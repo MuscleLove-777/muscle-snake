@@ -3,18 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>筋肉スネーク / Muscle Snake | MuscleLove</title>
-<meta name="description" content="筋肉スネークゲーム！プロテインを食べて成長しよう！Classic snake game with muscle girls!">
+<!-- ML SEO v1 -->
+<title>【無料】筋肉スネーク - スネークゲームブラウザゲーム | MuscleLove</title>
+<meta name="description" content="【無料・登録不要】筋肉スネークはスネークゲームの暇つぶしブラウザゲーム。プロテインを食べて成長！クラシックスネークゲーム。スマホ・PC両対応。筋肉美女と遊ぶMuscleLove提供のミニゲーム。">
 <meta property="og:title" content="筋肉スネーク / Muscle Snake | MuscleLove">
 <meta property="og:description" content="プロテインを食べて筋肉スネークを育てよう！💪">
 <link rel="stylesheet" href="style.css">
-  <meta property="og:image" content="https://musclelove-777.github.io/muscle-snake/og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/png">
-  <meta name="twitter:image" content="https://musclelove-777.github.io/muscle-snake/og.png">
+<!-- ML Analytics: GA4 + Vercel Web Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLCFVY5TF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLCFVY5TF', { send_page_view: true });
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<!-- /ML Analytics -->
+<script defer src="https://musclelove-games.vercel.app/ml-events.js" data-ml-events="v1"></script>
 </head>
-<body>
+<body><div data-tag="ml-pr-bar-v1" style="background:#fef3c7;color:#78350f;padding:6px 12px;text-align:center;font-size:12px;border-bottom:1px solid #fcd34d;font-family:system-ui,sans-serif;line-height:1.4">当サイトの記事には広告（アフィリエイトリンク）が含まれる場合があります。掲載順位や紹介内容は当サイトの編集方針に基づきます。</div>
 <div id="app">
   <!-- Title Screen -->
   <div id="title-screen" class="screen active">
@@ -116,6 +123,242 @@
     </div>
   </div>
 </div>
+
+<!-- ===== Rules Modal (injected, non-invasive) ===== -->
+<style>
+  .ml-rules-btn{
+    position:fixed; top:10px; left:10px; z-index:1000;
+    background:rgba(0,0,0,0.65); color:#39ff14;
+    border:1px solid #39ff14; border-radius:8px;
+    padding:6px 10px; font-size:13px; font-weight:bold;
+    cursor:pointer; font-family:inherit;
+    box-shadow:0 0 8px rgba(57,255,20,0.4);
+    -webkit-tap-highlight-color:transparent;
+  }
+  .ml-rules-btn:hover{ background:rgba(57,255,20,0.15); }
+  .ml-rules-overlay{
+    position:fixed; inset:0; z-index:1000;
+    background:rgba(0,0,0,0.75);
+    display:none; align-items:center; justify-content:center;
+    padding:16px; box-sizing:border-box;
+  }
+  .ml-rules-overlay.ml-rules-show{ display:flex; }
+  .ml-rules-panel{
+    background:#1a1a24; color:#f0f0f0;
+    border:2px solid #39ff14; border-radius:12px;
+    width:min(560px, 100%); max-height:80vh; overflow-y:auto;
+    padding:20px 20px 24px; box-sizing:border-box;
+    box-shadow:0 0 24px rgba(57,255,20,0.35);
+    font-family:inherit; position:relative;
+  }
+  .ml-rules-close{
+    position:absolute; top:8px; right:10px;
+    background:transparent; border:none; color:#f0f0f0;
+    font-size:22px; cursor:pointer; line-height:1;
+    padding:4px 8px;
+  }
+  .ml-rules-close:hover{ color:#ff6b6b; }
+  .ml-rules-tabs{
+    display:flex; gap:6px; margin:4px 0 14px;
+  }
+  .ml-rules-tab{
+    flex:1; padding:8px 10px; background:#23232f;
+    color:#aaa; border:1px solid #333; border-radius:6px;
+    cursor:pointer; font-size:14px; font-weight:bold;
+    font-family:inherit;
+  }
+  .ml-rules-tab.ml-rules-active{
+    background:#39ff14; color:#0a0a0f; border-color:#39ff14;
+  }
+  .ml-rules-body h2{
+    margin:0 0 10px; font-size:18px; color:#39ff14;
+  }
+  .ml-rules-body h3{
+    margin:14px 0 6px; font-size:15px; color:#ffe66d;
+  }
+  .ml-rules-body p, .ml-rules-body li{
+    font-size:14px; line-height:1.6; margin:4px 0;
+  }
+  .ml-rules-body ul{ padding-left:20px; margin:4px 0; }
+  .ml-rules-hidden{ display:none !important; }
+  @media (max-width:600px){
+    .ml-rules-btn{ font-size:12px; padding:5px 8px; }
+    .ml-rules-panel{ padding:16px; }
+    .ml-rules-body h2{ font-size:16px; }
+    .ml-rules-body p, .ml-rules-body li{ font-size:13px; }
+  }
+</style>
+
+<button id="ml-rules-btn" class="ml-rules-btn" type="button" aria-label="Rules">❓ RULES</button>
+
+<div id="ml-rules-overlay" class="ml-rules-overlay" role="dialog" aria-modal="true" aria-labelledby="ml-rules-title">
+  <div class="ml-rules-panel" id="ml-rules-panel">
+    <button class="ml-rules-close" id="ml-rules-close" type="button" aria-label="Close">✕</button>
+    <div class="ml-rules-tabs">
+      <button class="ml-rules-tab ml-rules-active" data-lang="ja" type="button">日本語</button>
+      <button class="ml-rules-tab" data-lang="en" type="button">English</button>
+    </div>
+
+    <div class="ml-rules-body" id="ml-rules-body-ja">
+      <h2 id="ml-rules-title">💪 筋肉スネーク ルール</h2>
+      <h3>🎯 目的</h3>
+      <p>プロテインを食べて筋肉スネークを育てよう！長く生き延びてハイスコアを狙え。</p>
+      <h3>🎮 操作方法</h3>
+      <ul>
+        <li>PC: 矢印キー または WASD で方向転換</li>
+        <li>スマホ: 画面スワイプ、または下部の方向ボタン</li>
+        <li>一時停止: P キー または Esc キー</li>
+      </ul>
+      <h3>🏆 スコア</h3>
+      <ul>
+        <li>🥩 プロテイン：+10点（体が1段階伸びる）</li>
+        <li>⭐ スター：+50点（約8%でレアに出現）</li>
+        <li>体が長くなるほどスピードUP！</li>
+      </ul>
+      <h3>💀 ゲームオーバー条件</h3>
+      <ul>
+        <li>壁に激突した時</li>
+        <li>自分の体に噛みついた時</li>
+      </ul>
+      <h3>🔥 Tips</h3>
+      <ul>
+        <li>速くなったら画面中央を意識して大きく曲がる</li>
+        <li>⭐スターは最優先で取りに行け、50点は美味い</li>
+        <li>逆方向には曲がれない、反転ミスに注意</li>
+        <li>長くなった後半は外周沿いに周回すると安全</li>
+        <li>焦ったら P キーで一時停止して落ち着こう</li>
+      </ul>
+    </div>
+
+    <div class="ml-rules-body ml-rules-hidden" id="ml-rules-body-en">
+      <h2>💪 Muscle Snake Rules</h2>
+      <h3>🎯 Goal</h3>
+      <p>Eat protein to grow your muscle snake! Survive as long as possible and chase a high score.</p>
+      <h3>🎮 Controls</h3>
+      <ul>
+        <li>PC: Arrow keys or WASD to change direction</li>
+        <li>Mobile: Swipe on the screen, or use the on-screen buttons</li>
+        <li>Pause: P key or Esc key</li>
+      </ul>
+      <h3>🏆 Scoring</h3>
+      <ul>
+        <li>🥩 Protein: +10 points (body grows by one)</li>
+        <li>⭐ Star: +50 points (rare, ~8% chance)</li>
+        <li>The longer you get, the faster you move!</li>
+      </ul>
+      <h3>💀 Game Over</h3>
+      <ul>
+        <li>Hitting a wall</li>
+        <li>Biting your own body</li>
+      </ul>
+      <h3>🔥 Tips</h3>
+      <ul>
+        <li>Stay near the center at high speed so you have room to turn</li>
+        <li>Always grab ⭐ stars first — 50 points is a huge bonus</li>
+        <li>You cannot reverse 180°, avoid sudden flip inputs</li>
+        <li>When long, circle along the outer walls to stay safe</li>
+        <li>Press P to pause whenever you feel overwhelmed</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var LANG_KEY = 'ml_lang';
+  var SEEN_KEY = 'ml_sn_seen';
+  var overlay = document.getElementById('ml-rules-overlay');
+  var panel   = document.getElementById('ml-rules-panel');
+  var btnOpen = document.getElementById('ml-rules-btn');
+  var btnClose= document.getElementById('ml-rules-close');
+  var tabs    = document.querySelectorAll('.ml-rules-tab');
+  var bodyJa  = document.getElementById('ml-rules-body-ja');
+  var bodyEn  = document.getElementById('ml-rules-body-en');
+
+  function applyLang(lang){
+    var isEn = (lang === 'en');
+    bodyJa.classList.toggle('ml-rules-hidden', isEn);
+    bodyEn.classList.toggle('ml-rules-hidden', !isEn);
+    tabs.forEach(function(t){
+      t.classList.toggle('ml-rules-active', t.getAttribute('data-lang') === lang);
+    });
+    try { localStorage.setItem(LANG_KEY, lang); } catch(_){}
+  }
+
+  function openModal(){ overlay.classList.add('ml-rules-show'); }
+  function closeModal(){
+    overlay.classList.remove('ml-rules-show');
+    try { localStorage.setItem(SEEN_KEY, '1'); } catch(_){}
+  }
+
+  // Initial language
+  var savedLang = 'ja';
+  try {
+    var v = localStorage.getItem(LANG_KEY);
+    if (v === 'en' || v === 'ja') savedLang = v;
+    else if ((navigator.language || '').toLowerCase().indexOf('ja') !== 0) savedLang = 'en';
+  } catch(_){}
+  applyLang(savedLang);
+
+  // Wire events
+  btnOpen.addEventListener('click', function(e){ e.stopPropagation(); openModal(); });
+  btnClose.addEventListener('click', function(e){ e.stopPropagation(); closeModal(); });
+  overlay.addEventListener('click', function(e){
+    if (e.target === overlay) closeModal();
+  });
+  // Prevent clicks inside panel from leaking to the game/canvas
+  panel.addEventListener('click', function(e){ e.stopPropagation(); });
+  panel.addEventListener('touchstart', function(e){ e.stopPropagation(); }, {passive:true});
+  panel.addEventListener('touchmove',  function(e){ e.stopPropagation(); }, {passive:true});
+  panel.addEventListener('touchend',   function(e){ e.stopPropagation(); }, {passive:true});
+
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(e){
+      e.stopPropagation();
+      applyLang(t.getAttribute('data-lang'));
+    });
+  });
+
+  // Block keyboard events (arrow/WASD/P/Esc) from reaching the game while open
+  document.addEventListener('keydown', function(e){
+    if (!overlay.classList.contains('ml-rules-show')) return;
+    if (e.key === 'Escape') { closeModal(); }
+    e.stopPropagation();
+  }, true);
+
+  // Auto-show first time
+  var seen = null;
+  try { seen = localStorage.getItem(SEEN_KEY); } catch(_){}
+  if (!seen) {
+    // Defer so it appears after initial layout
+    setTimeout(openModal, 150);
+  }
+})();
+</script>
+<!-- ===== /Rules Modal ===== -->
+
 <script src="game.js"></script>
+<!-- ML CrossLink v1: 他のゲーム回遊用フローティングリンク -->
+<a href="https://musclelove-games.vercel.app/?utm_source=ml-game&utm_medium=cross-link&utm_campaign=muscle-snake"
+   target="_top" rel="noopener"
+   id="ml-crosslink"
+   style="position:fixed;left:8px;bottom:8px;z-index:99998;
+          background:linear-gradient(135deg,#FF6B6B,#FF2D3A);color:#fff;
+          padding:6px 11px;border-radius:18px;font-size:11px;font-weight:700;
+          font-family:system-ui,-apple-system,'Hiragino Sans',sans-serif;
+          text-decoration:none;box-shadow:0 4px 14px rgba(255,45,58,0.5);
+          border:1px solid rgba(255,255,255,0.3);
+          line-height:1;display:inline-flex;align-items:center;gap:4px;
+          opacity:0.92;transition:transform .15s,opacity .15s;">
+  🎮&nbsp;他58本</a>
+<script>
+  (function(){
+    var el = document.getElementById('ml-crosslink');
+    if (!el) return;
+    el.addEventListener('mouseover', function(){ el.style.opacity='1'; el.style.transform='scale(1.06)'; });
+    el.addEventListener('mouseout',  function(){ el.style.opacity='0.92'; el.style.transform='scale(1.0)'; });
+  })();
+</script>
+<!-- /ML CrossLink v1 -->
 </body>
 </html>
